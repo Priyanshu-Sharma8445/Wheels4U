@@ -33,8 +33,10 @@
     gap: 10px;
   }
   
-  header img {
+  header h1 img {
     height: 40px;
+    border-radius: 50%;
+    
   }
   
   nav ul {
