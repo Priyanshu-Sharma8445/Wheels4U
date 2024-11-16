@@ -18,7 +18,7 @@
         <h1>Insert New Car</h1>
         <p>Fill out the form below to add a new car to the Wheels4U inventory.</p>
         
-        <form action="insert_car.php" method="POST" class="car-form">
+        <form action="insert_car.php" method="POST" enctype="multipart/form-data" class="car-form">
             <label for="car-model">Car Model:</label>
             <input type="text" id="car-model" name="car_model" required>
             
@@ -41,6 +41,9 @@
             <label for="description">Description:</label>
             <textarea id="description" name="description" rows="4" placeholder="Enter a brief description of the car" required></textarea>
             
+            <label for="car-image">Car Image:</label>
+            <input type="file" id="car-image" name="car_image" accept="image/*" required>
+
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -64,7 +67,7 @@ $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "connection";
+
 // Check if form data is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Retrieve form data
@@ -75,20 +78,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $status = $_POST['status'];
     $description = $_POST['description'];
 
-    // Prepare SQL insert statement
-    $sql = "INSERT INTO cars (car_model, brand, category, price, status, description) 
-            VALUES ('$car_model', '$brand', '$category', '$price', '$status', '$description')";
+    // Handle file upload
+    $target_dir = "../Images/";
+    $car_image = $_FILES['car_image']['name'];
+    $target_file = $target_dir . basename($car_image);
+    $upload_ok = 1;
+    $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // Execute the query and check for success
-    if ($conn->query($sql) === TRUE) {
-        echo "New car successfully added to inventory!";
+    // Check if file is an image
+    $check = getimagesize($_FILES['car_image']['tmp_name']);
+    if ($check !== false) {
+        $upload_ok = 1;
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "File is not an image.";
+        $upload_ok = 0;
+    }
+
+    // Allow certain file formats
+    if ($image_file_type != "jpg" && $image_file_type != "png" && $image_file_type != "jpeg" && $image_file_type != "gif") {
+        echo "Only JPG, JPEG, PNG & GIF files are allowed.";
+        $upload_ok = 0;
+    }
+
+    // Check if $upload_ok is set to 0 by an error
+    if ($upload_ok == 0) {
+        echo "Sorry, your file was not uploaded.";
+    } else {
+        // Try to upload file
+        if (move_uploaded_file($_FILES['car_image']['tmp_name'], $target_file)) {
+            // Prepare SQL insert statement
+            $sql = "INSERT INTO cars (car_model, brand, category, price, status, description, image_path) 
+                    VALUES ('$car_model', '$brand', '$category', '$price', '$status', '$description', '$target_file')";
+
+            // Execute the query and check for success
+            if ($conn->query($sql) === TRUE) {
+                echo "New car successfully added to inventory!";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
     }
 }
 
 // Close the database connection
 $conn->close();
 ?>
+
 
 </html>
