@@ -8,11 +8,11 @@
 </head>
 <body>
   <header>
-    <h1><img src="assets/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
+    <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="cars.html">Cars</a></li>
+        <li><a href="cars.php">Cars</a></li>
         <li><a href="rent.html">Rent Now</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
@@ -133,13 +133,14 @@ if ($result->num_rows > 0) {
     $description = $row['description'];
     $image_path = $row['image_path'];
 
-  echo "
-  <div class='car-card' onclick='window.location.href='rent.html?car=Car+Model+2''>
-    <img src='$image_path' alt='Car 2'>
-    <h3>$car_model</h3>
-    <p>Price: $price/day</p>
-  </div>
+    echo "
+    <div class=\"car-card\" onclick=\"window.location.href='rent.html?car=$car_model'\" >
+      <img src='$image_path' alt='Car 2'>
+      <h3>$car_model</h3>
+      <p>Price: $$price/day</p>
+    </div>
   ";
+  
     }
 } else {
     echo "No details found for the car model: " . $car_model;

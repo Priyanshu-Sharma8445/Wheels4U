@@ -68,7 +68,7 @@
   }
   
   section#home {
-    background: url('Images/front.jpg') center/cover no-repeat;
+    background: url('../Images/front.jpg') center/cover no-repeat;
     color: #f8f9fa;
     padding: 80px 20px;
     height: 700px;
@@ -242,5 +242,13 @@
     to {
       transform: translateY(-5px);
     }
+  }
+
+
+  #rentalForm{
+    height: 334px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
