@@ -13,7 +13,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="cars.php">Cars</a></li>
-        <li><a href="rent.html">Rent Now</a></li>
+        <li><a href="rent.php">Rent Now</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
@@ -27,81 +27,9 @@
     </div>
     
 <div id="cards">
-    <!-- Each car card includes a link to the rent page with the car model passed as a parameter -->
-    <!-- <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+1'">
-      <img src="../Images/fortuner.jpg" alt="Car 1">
-      <h3>Fortuner</h3>
-      <p>Price: $50/day</p>
-    </div>
-
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/Mahindra-Scorpio.jpg" alt="Car 2">
-      <h3>Mahindra-Scorpio</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/Mahindra XUV700.jpeg" alt="Car 2">
-      <h3>Mahindra XUV700</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/urus.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/endeavour.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/gloster.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/gls600.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/harrier.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/hondacity.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/pajero.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/tharroxx.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/a8l.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/amgg63.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div>
-    <div class="car-card" onclick="window.location.href='rent.html?car=Car+Model+2'">
-      <img src="../Images/bmwx7.jpg" alt="Car 2">
-      <h3>Car Model 2</h3>
-      <p>Price: $70/day</p>
-    </div> -->
     
-
-    <?php
+    
+<?php
 // Database connection variables
 $host = 'localhost';
 $dbname = 'wheels4u';
@@ -134,7 +62,7 @@ if ($result->num_rows > 0) {
     $image_path = $row['image_path'];
 
     echo "
-    <div class=\"car-card\" onclick=\"window.location.href='rent.html?car=$car_model'\" >
+    <div class=\"car-card\" onclick=\"window.location.href='rent.php?car=$car_model'\" >
       <img src='$image_path' alt='Car 2'>
       <h3>$car_model</h3>
       <p>Price: $$price/day</p>

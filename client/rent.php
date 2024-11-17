@@ -1,3 +1,25 @@
+<?php
+// Database connection variables
+$host = 'localhost';
+$dbname = 'wheels4u';
+$username = 'root';
+$password = '';
+
+// Create a MySQLi connection
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to fetch all cars from the database
+$sql = "SELECT * FROM cars";
+$result = $conn->query($sql);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +35,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="cars.php">Cars</a></li>
-        <li><a href="rent.html">Rent Now</a></li>
+        <li><a href="rent.php">Rent Now</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
@@ -24,7 +46,7 @@
     <form id="rentalForm">
       <label for="car">Select Car:</label>
       <select id="car" name="car">
-        <option value="Car Model 1">Fortuner</option>
+        <!-- <option value="Car Model 1">Fortuner</option>
         <option value="Scorpion">Mahindra-Scorpio</option>
         <option value="Urus">Mahindra-XUV700</option>
         <option value="Car Model 4">Mahindra-Scorpio</option>
@@ -37,8 +59,15 @@
         <option value="Car Model 11">Mahindra-Scorpio</option>
         <option value="Car Model 12">Mahindra-Scorpio</option>
         <option value="Car Model 13">Mahindra-Scorpio</option>
-        <option value="Car Model 14">Mahindra-Scorpio</option>
-        <option value="Car Model 15">Mahindra-Scorpio</option>
+        <option value="Car Model 15">Mahindra-Scorpio</option> -->
+        <?php
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value='" . $row['car_model'] . "'>" . $row['car_model'] . "</option>";
+    }
+?>
+
+
+
       </select>
 
       <label for="days">Number of Days:</label>
