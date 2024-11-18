@@ -60,4 +60,9 @@ This project aims to simplify the car rental process by providing a smooth, seam
   <li><strong>Email:</strong> <a href="priyanshu.sharma.mzn@gmail.com">priyanshu.sharma.mzn@gmail.com</a></li>
   <li><strong>GitHub:</strong> <a href="https://github.com/Priyanshu-Sharma8445" target="_blank">Priyanshu-Sharma8445</a></li>
 </ul>
-
+<h2>📬 Contact</h2>
+<ul>
+  <li><strong>Project Cooridnator:</strong> Pranav Sharma</li>
+  <li><strong>Email:</strong> <a href="pranavsharma2595@gmail.com">pranavsharma2595@gmail.com</a></li>
+  <li><strong>GitHub:</strong> <a href="https://github.com/Nand24" target="_blank">Nand24</a></li>
+</ul>
