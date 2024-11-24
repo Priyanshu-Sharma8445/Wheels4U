@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Styled Login Form</title>
+    <link rel="stylesheet" href="headerStyle.css">
     <style>
-        body {
+        body{
+            margin: 0;
+            padding: 0;
+            color:white;
+        }
+        #body-form {
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,9 +21,10 @@
             font-family: Arial, sans-serif;
             background: url('../Images/front2.jpg') no-repeat center center/cover;
             position: relative;
+            
         }
         /* Black overlay */
-        body::before {
+        #body-form::before {
             content: '';
             position: absolute;
             top: 0;
@@ -81,7 +88,13 @@
         }
     </style>
 </head>
+    
 <body>
+<header>
+    <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
+    </header>
+    
+    <div id="body-form">
     <div class="form-container">
         <h2>Login</h2>
         <form method="POST" action="">
@@ -96,6 +109,7 @@
             </select>
             <button type="submit">Login</button>
         </form>
+    </div>
     </div>
 </body>
 </html>
