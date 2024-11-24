@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Location: ../Admin_area/index.php');
             } else {
                 $_SESSION['user'] = $user['username'];
-                header('Location: user_dashboard.php');
+                header('Location: ../client/index.php');
             }
             exit();
         } else {

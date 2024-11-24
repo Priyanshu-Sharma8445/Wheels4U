@@ -11,7 +11,7 @@
     <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="cars.php">Cars</a></li>
         <li><a href="rent.php">Rent Now</a></li>
         <li><a href="contact.html">Contact Us</a></li>

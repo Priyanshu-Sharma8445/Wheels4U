@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,6 +113,7 @@
       color: white;
       margin: 0;
     }
+    
   </style>
 </head>
 
@@ -114,19 +123,19 @@
 
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="cars.php">Cars</a></li>
         <li><a href="rent.php">Rent Now</a></li>
         <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="../login/login.php">Login</a></li>
-        <li><a href="../login/signup.php">Sign Up</a></li>
+        <li><a href=" ../login/logout.php">Logout</a></li>
       </ul>
     </nav>
 
     </header>
 
       <section id="home">
-        <h2>Welcome to Wheels4U</h2>
+        <h2>Welcome <?php echo $_SESSION['user']; ?>! to Wheels4U</h2>
+        
         <p>Your gateway to affordable and reliable vehicle rentals.</p>
       </section>
 
@@ -168,12 +177,11 @@
 
         </div>
 
-        <div class="actions">
-          <h2>To explore more, please login or sign up!</h2>
-          <a href="../login/login.php">Login</a>
-          <a href="../login/signup.php">Sign Up</a>
-        </div>
+        
       </section>
+
+
+      
 
 
 
