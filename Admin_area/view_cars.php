@@ -27,6 +27,8 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - View All Cars</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbarStyling.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -84,8 +86,16 @@ $result = $conn->query($sql);
 <body>
 
 <header>
-    <h1>Wheels4U - Admin Panel</h1>
-</header>
+    <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
+    <nav>
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="insert_car.php">Insert Car</a></li>
+        <li><a href="view_cars.php">View Cars</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
 <div class="container">
     <h2>All Cars in the Inventory</h2>

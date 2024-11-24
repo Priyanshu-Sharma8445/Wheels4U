@@ -1,17 +1,26 @@
+// function calculateCost(price) {
+    
+//     const days = document.getElementById('days').value;
+    
+//     if (days) {
+//       const cost = price * days;
+//       document.getElementById('cost').textContent = `Total Cost: $${cost}`;
+//     } else {
+//       document.getElementById('cost').textContent = 'Please enter the number of days.';
+//     }
+//   }
+  
+
 function calculateCost() {
-    const car = document.getElementById('car').value;
-    const days = document.getElementById('days').value;
-  
-    const carPrices = {
-      'Car Model 1': 50,
-      'Car Model 2': 70
-    };
-  
-    if (days) {
-      const cost = carPrices[car] * days;
-      document.getElementById('cost').textContent = `Total Cost: $${cost}`;
-    } else {
-      document.getElementById('cost').textContent = 'Please enter the number of days.';
-    }
+  const carSelect = document.querySelector("select");
+  const selectedOption = carSelect.options[carSelect.selectedIndex];
+  const price = selectedOption.getAttribute("data-price");
+  const days = document.getElementById("days").value;
+
+  if (price && days) {
+    const totalCost = price * days;
+    document.getElementById("cost").textContent = `Total Cost: ${totalCost}`;
+  } else {
+    document.getElementById("cost").textContent = "Please select a car and enter the number of days.";
   }
-  
+}

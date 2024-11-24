@@ -46,24 +46,12 @@ $result = $conn->query($sql);
     <form id="rentalForm">
       <label for="car">Select Car:</label>
       <select id="car" name="car">
-        <!-- <option value="Car Model 1">Fortuner</option>
-        <option value="Scorpion">Mahindra-Scorpio</option>
-        <option value="Urus">Mahindra-XUV700</option>
-        <option value="Car Model 4">Mahindra-Scorpio</option>
-        <option value="Car Model 5">Mahindra-Scorpio</option>
-        <option value="Car Model 6">Mahindra-Scorpio</option>
-        <option value="Car Model 7">Mahindra-Scorpio</option>
-        <option value="Car Model 8">Mahindra-Scorpio</option>
-        <option value="Car Model 9">Mahindra-Scorpio</option>
-        <option value="Car Model 10">Mahindra-Scorpio</option>
-        <option value="Car Model 11">Mahindra-Scorpio</option>
-        <option value="Car Model 12">Mahindra-Scorpio</option>
-        <option value="Car Model 13">Mahindra-Scorpio</option>
-        <option value="Car Model 15">Mahindra-Scorpio</option> -->
+        
+        
         <?php
-    while ($row = $result->fetch_assoc()) {
-        echo "<option value='" . $row['car_model'] . "'>" . $row['car_model'] . "</option>";
-    }
+   while ($row = $result->fetch_assoc()) {
+    echo "<option value='" . $row['car_model'] . "' data-price='" . $row['price'] . "'>" . $row['car_model'] . "</option>";
+}
 ?>
 
 

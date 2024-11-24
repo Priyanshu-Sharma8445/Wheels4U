@@ -6,12 +6,21 @@
     <title>Insert New Brand - Wheels4U Admin</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="brandAndCategory.css">
+    <link rel="stylesheet" href="navbarStyling.css">
+
 
 </head>
 <body>
 <header>
     <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
-    
+    <nav>
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="insert_car.php">Insert Car</a></li>
+        <li><a href="view_cars.php">View Cars</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
     <div class="admin-container">
         <h1>Insert New Brand</h1>

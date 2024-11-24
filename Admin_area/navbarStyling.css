@@ -1,0 +1,47 @@
+  /* Header Styling */
+  header {
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  header h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  header h1 img {
+    height: 40px;
+    border-radius: 50%;
+    
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  nav ul li a {
+    color: #f8f9fa;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 15px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
+  }
+  
+  nav ul li a:hover {
+    background-color: #495057;
+    color: #ffffff;
+  }
