@@ -1,3 +1,49 @@
+<?php
+
+    session_start();
+    $conn=mysqli_connect('localhost','root','','wheels4u');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+
+    
+    $table = ($role == 'admin') ? 'admins' : 'users';
+
+    
+    $sql = "SELECT * FROM $table WHERE username = '$username'";
+
+    
+    $result = mysqli_query($conn,$sql);
+
+    
+    if ($result && $result->num_rows > 0) {
+        
+        $user = $result->fetch_assoc();
+
+        
+        if ($password == $user['password']) {
+            $_SESSION[$role] = $user['username']; 
+            if ($role == 'admin') {
+                $_SESSION['admin'] = $user['username'];
+                header('Location: ../Admin_area/index.php');
+            } else {
+                $_SESSION['user'] = $user['username'];
+                header('Location: user_dashboard.php');
+            }
+            exit();
+        } else {
+            $error = "Invalid password!";
+            
+        }
+    } else {
+        $error = "User not found!";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +55,7 @@
         body{
             margin: 0;
             padding: 0;
-            color:white;
+            
         }
         #body-form {
             margin: 0;
@@ -93,7 +139,7 @@
 <header>
     <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
     </header>
-    
+    <?php if (isset($error)) { echo "<p style='color: red;'>$error</p>"; } ?>
     <div id="body-form">
     <div class="form-container">
         <h2>Login</h2>
@@ -111,5 +157,6 @@
         </form>
     </div>
     </div>
+
 </body>
 </html>
