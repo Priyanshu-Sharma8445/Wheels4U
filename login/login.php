@@ -132,6 +132,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .form-container button:hover {
             background-color: rgba(0, 123, 255, 1);
         }
+        header{
+            height: 30px; 
+        }
+        header h1{
+            margin-top:-7px;
+        }
+        header h1 img{
+            border-radius: 50%;
+        }
     </style>
 </head>
     
