@@ -34,11 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             exit();
         } else {
-            $error = "Invalid password!";
+            
+            echo "<script>alert('Invalid password!')</script>";
             
         }
     } else {
-        $error = "User not found!";
+        
+        echo "<script>alert('User not found!')</script>";
+        
     }
 }
 ?>
@@ -148,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <header>
     <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
     </header>
-    <?php if (isset($error)) { echo "<p style='color: red;'>$error</p>"; } ?>
+    
     <div id="body-form">
     <div class="form-container">
         <h2>Login</h2>

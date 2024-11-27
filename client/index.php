@@ -118,19 +118,21 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 <body>
-  <header>
-    <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
+<header style="height: 70px; ">
+  <div style="display: flex; justify-content: space-between;">
+    <h1 style="margin-top: -18px;"><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
 
     <nav>
       <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="cars.php">Cars</a></li>
         <li><a href="rent.php">Rent Now</a></li>
+        <li><a href="rentcar.php">Rent Your car</a></li>
         <li><a href="contact.html">Contact Us</a></li>
         <li><a href=" ../login/logout.php">Logout</a></li>
       </ul>
     </nav>
-
+  </div>
     </header>
 
       <section id="home">

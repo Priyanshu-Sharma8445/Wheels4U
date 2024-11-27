@@ -43,6 +43,7 @@ if (!isset($_SESSION['admin'])) {
             <a href="insert_brand.php">Insert New Brand</a>
             <a href="insert_category.php">Insert New Category</a>
             <a href="view_cars.php">View Cars</a>
+            <a href="view_rent_car.php">View Rent Cars uploaded by user</a>
             <a href="view_categories.html">View Categories</a>
             <a href="view_brands.html">View Brands</a>
             <a href="view_orders.html">View All Orders</a>
