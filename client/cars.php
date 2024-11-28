@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
+<header style="height: 70px; ">
+  <div style="display: flex; justify-content: space-between;">
+    <h1 style="margin-top: -18px;"><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
     <nav>
       <ul>
         <li><a href="index.php">Home</a></li>
@@ -17,6 +18,7 @@
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
+</div>
   </header>
 
   <section id="cars" class="gallery">
