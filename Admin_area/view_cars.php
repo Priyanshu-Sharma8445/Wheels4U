@@ -1,19 +1,18 @@
 <?php
-// Database connection variables
+
 $host = 'localhost';
 $dbname = 'wheels4u';
 $username = 'root';
 $password = '';
 
-// Create a MySQLi connection
+
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Check the connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Query to fetch all cars from the database
 $sql = "SELECT * FROM cars";
 $result = $conn->query($sql);
 
@@ -62,6 +61,8 @@ $result = $conn->query($sql);
         th, td {
             padding: 12px;
             text-align: center;
+            
+            flex-wrap:wrap;
         }
         th {
             background-color: #343a40;
@@ -102,7 +103,7 @@ $result = $conn->query($sql);
 
     <?php
     if ($result->num_rows > 0) {
-        // Start the table
+
         echo "<table>";
         echo "<tr>
                 <th>Car Model</th>
@@ -115,7 +116,6 @@ $result = $conn->query($sql);
                 <th>Actions</th>
               </tr>";
 
-        // Loop through and display each car in a row
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
                     <td>" . $row['car_model'] . "</td>
@@ -125,22 +125,21 @@ $result = $conn->query($sql);
                     <td>" . ucfirst($row['status']) . "</td>
                     <td>" . $row['description'] . "</td>
                     <td><img src='" . $row['image_path'] . "' alt='" . $row['car_model'] . "'></td>
-                    <td>
-                        <a href='' class='action-btn'>Edit</a>
-                        <a href='' class='action-btn' onclick='return confirm(\"Are you sure you want to delete this car?\") '>Delete</a>
+                    <td>                        
+                        <a href='acDelete.php?car_model=" . $row['car_model'] . "' class='action-btn' onclick='return confirm(\"Are you sure you want to delete this car?\") '>Delete</a>
                     </td>
                   </tr>";
 
                   
         }
 
-        // End the table
+
         echo "</table>";
     } else {
         echo "<p>No cars found in the inventory.</p>";
     }
 
-    // Close the database connection
+
     $conn->close();
     ?>
 </div>

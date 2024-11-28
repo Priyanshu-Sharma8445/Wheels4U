@@ -1,3 +1,32 @@
+<?php
+
+$host = "localhost";
+$username = "root";  
+$password = "";      
+$dbname = "wheels4u"; 
+
+
+$conn = new mysqli($host, $username, $password, $dbname);
+
+
+if (isset($_POST['sb'])) {
+    $cat_name = $_POST['category_name'];
+
+    $sql = "INSERT INTO category (name) VALUES ('$cat_name')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>alert('ategory added successfully!');</script>";
+        header("Location: index.php");
+    } else {
+        echo "<script>alert('Error: " . $conn->error . "');</script>";
+    }
+}
+
+
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +35,8 @@
     <title>Insert New Category - Wheels4U Admin</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="brandAndCategory.css">
+    <link rel="stylesheet" href="navbarStyling.css">
+    
 
 </head>
 <body>
@@ -24,11 +55,11 @@
         <h1>Insert New Category</h1>
         <p>Fill out the form below to add a new category to the Wheels4U platform.</p>
         
-        <form action="index.php" method="POST" class="simple-form">
+        <form method="POST" class="simple-form">
             <label for="category-name">Category Name:</label>
             <input type="text" id="category-name" name="category_name" required>
             
-            <button type="submit" class="submit-btn">Submit</button>
+            <button type="submit" class="submit-btn" name="sb">Submit</button>
         </form>
     </div>
     <footer>

@@ -5,15 +5,15 @@ $dbname = 'wheels4u';
 $username = 'root';
 $password = '';
 
-
 $conn = new mysqli($host, $username, $password, $dbname);
+
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 
-$sql = "SELECT * FROM user_rent_cars";
+$sql = "SELECT * FROM orders";
 $result = $conn->query($sql);
 
 
@@ -66,20 +66,7 @@ $result = $conn->query($sql);
             background-color: #343a40;
             color: white;
         }
-        td img {
-            width: 100px;
-            height: auto;
-        }
-        .action-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .action-btn:hover {
-            background-color: #0056b3;
-        }
+        
     </style>
 </head>
 <body>
@@ -101,45 +88,32 @@ $result = $conn->query($sql);
 
     <?php
     if ($result->num_rows > 0) {
-
+        // Start the table
         echo "<table>";
         echo "<tr>
-                <th>Owner Name</th>
+                <th>Order ID</th>
                 <th>Car Name</th>
-                <th>Car Brand</th>
-                <th>Car Model</th>
-                <th>Manufacturing Year</th>
-                <th>Price Per Day ($)</th>
-                <th>Location</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Actions</th>
+                <th>Order BY</th>
+                <th>Day of booking</th>
+                <th>Day of return</th>
+                <th>Days</th>
+                <th>Total Cost</th>
               </tr>";
 
-
+        // Loop through and display each car in a row
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
-                    <td>" . $row['owner_username'] . "</td>
-                    <td>" . $row['car_name'] . "</td>
-                    <td>" . $row['car_brand'] . "</td>
+                    <td>" . $row['order_id'] . "</td>
                     <td>" . $row['car_model'] . "</td>
-                    <td>" . $row['year'] . "</td>
-                    <td>" . $row['price_per_day'] . "</td>
-                    <td>" . $row['location'] . "</td>
-                    <td>" . $row['description'] . "</td>
-                    
-
-                    <td><img src='". $row['image'] . "' alt='" . $row['car_model'] . "'></td>
-
-                    <td>
-                        <a href='action.php?id=" . $row['id'] . "' class='action-btn'>Accept</a>
-                    </td>
-
+                    <td>" . $row['username'] . "</td>
+                    <td>" . $row['day_of_booking'] . "</td>
+                    <td>" . $row['day_of_return'] . "</td>
+                    <td>" . $row['days'] . "</td>
+                    <td>" . $row['total_cost'] . "</td> 
                   </tr>";
 
                   
         }
-
 
         echo "</table>";
     } else {

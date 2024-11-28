@@ -1,14 +1,14 @@
 <?php
-// Database connection variables
+
 $host = 'localhost';
 $dbname = 'wheels4u';
 $username = 'root';
 $password = '';
 
-// Create a MySQLi connection
+
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Check the connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
 
 
         if ($conn->query($insert_sql)) {
-            // Remove the car from the user_rent_cars table
+
             $delete_sql = "DELETE FROM user_rent_cars WHERE id = $car_id";
             $delres = mysqli_query($conn,$delete_sql);
         }
@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
     } 
 } 
 
-// Close the database connection
+
 $conn->close();
 
 header("Location: view_rent_car.php");

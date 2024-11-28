@@ -69,17 +69,16 @@ $dbname = 'wheels4u';
 $username = 'root';
 $password = '';
 
-// Create a MySQLi connection
+
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if form data is submitted
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve form data
+
     $car_model = $_POST['car_model'];
     $brand = $_POST['brand'];
     $category = $_POST['category'];
@@ -103,23 +102,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $upload_ok = 0;
     }
 
-    // Allow certain file formats
+
     if ($image_file_type != "jpg" && $image_file_type != "png" && $image_file_type != "jpeg" && $image_file_type != "gif") {
         echo "Only JPG, JPEG, PNG & GIF files are allowed.";
         $upload_ok = 0;
     }
 
-    // Check if $upload_ok is set to 0 by an error
+
     if ($upload_ok == 0) {
         echo "Sorry, your file was not uploaded.";
     } else {
-        // Try to upload file
+
         if (move_uploaded_file($_FILES['car_image']['tmp_name'], $target_file)) {
-            // Prepare SQL insert statement
+
             $sql = "INSERT INTO cars (car_model, brand, category, price, status, description, image_path) 
                     VALUES ('$car_model', '$brand', '$category', '$price', '$status', '$description', '$target_file')";
 
-            // Execute the query and check for success
+
             if ($conn->query($sql) === TRUE) {
                 echo "New car successfully added to inventory!";
             } else {
@@ -133,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: index.php");
 }
 
-// Close the database connection
+
 $conn->close();
 ?>
 

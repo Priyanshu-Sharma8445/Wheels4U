@@ -1,19 +1,20 @@
 <?php
-
+// Database connection variables
 $host = 'localhost';
 $dbname = 'wheels4u';
 $username = 'root';
 $password = '';
 
-
+// Create a MySQLi connection
 $conn = new mysqli($host, $username, $password, $dbname);
 
+// Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
-$sql = "SELECT * FROM user_rent_cars";
+// Query to fetch all cars from the database
+$sql = "SELECT * FROM brands";
 $result = $conn->query($sql);
 
 
@@ -66,20 +67,7 @@ $result = $conn->query($sql);
             background-color: #343a40;
             color: white;
         }
-        td img {
-            width: 100px;
-            height: auto;
-        }
-        .action-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .action-btn:hover {
-            background-color: #0056b3;
-        }
+        
     </style>
 </head>
 <body>
@@ -88,7 +76,7 @@ $result = $conn->query($sql);
     <h1><img src="../Images/logo.png" alt="Wheels4U Logo"> Wheels4U</h1>
     <nav>
       <ul>
-        <li><a href="./index.php">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="insert_car.php">Insert Car</a></li>
         <li><a href="view_cars.php">View Cars</a></li>
         <li><a href="contact.html">Contact Us</a></li>
@@ -97,56 +85,36 @@ $result = $conn->query($sql);
   </header>
 
 <div class="container">
-    <h2>All Cars in the Inventory</h2>
+    <h2>All Brands in the Inventory</h2>
 
     <?php
     if ($result->num_rows > 0) {
-
+        
         echo "<table>";
         echo "<tr>
-                <th>Owner Name</th>
-                <th>Car Name</th>
-                <th>Car Brand</th>
-                <th>Car Model</th>
-                <th>Manufacturing Year</th>
-                <th>Price Per Day ($)</th>
-                <th>Location</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Actions</th>
+                <th>SRNO</th>                
+                <th>Brand</th>
+                
               </tr>";
 
-
+        
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
-                    <td>" . $row['owner_username'] . "</td>
-                    <td>" . $row['car_name'] . "</td>
-                    <td>" . $row['car_brand'] . "</td>
-                    <td>" . $row['car_model'] . "</td>
-                    <td>" . $row['year'] . "</td>
-                    <td>" . $row['price_per_day'] . "</td>
-                    <td>" . $row['location'] . "</td>
-                    <td>" . $row['description'] . "</td>
+                    <td>" . $row['id'] . "</td>
+                    <td>" . $row['name'] . "</td>
                     
-
-                    <td><img src='". $row['image'] . "' alt='" . $row['car_model'] . "'></td>
-
-                    <td>
-                        <a href='action.php?id=" . $row['id'] . "' class='action-btn'>Accept</a>
-                    </td>
-
                   </tr>";
 
                   
         }
 
-
+       
         echo "</table>";
     } else {
         echo "<p>No cars found in the inventory.</p>";
     }
 
-
+    
     $conn->close();
     ?>
 </div>
