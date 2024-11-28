@@ -60,14 +60,14 @@ if ($result->num_rows > 0) {
     $status = $row['status'];
     $description = $row['description'];
     $image_path = $row['image_path'];
-
-    echo "
+      if($status == 'available'){
+        echo "
     <div class=\"car-card\" onclick=\"window.location.href='rent.php?car=$car_model'\" >
       <img src='$image_path' alt='Car 2'>
       <h3>$car_model</h3>
       <p>Price: $$price/day</p>
     </div>
-  ";
+  ";}
   
     }
 } else {

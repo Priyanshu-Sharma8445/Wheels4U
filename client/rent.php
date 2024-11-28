@@ -63,6 +63,8 @@ $result = $conn->query($sql);
 
       <button type="button" onclick="calculateCost()">Calculate Cost</button>
       <p id="cost"></p>
+
+      <button type="button" id="confirmBookingButton" style="display:none; margin-top:20px;" onclick="confirmBooking()">Confirm Booking</button>
     </form>
   </section>
 
@@ -72,6 +74,8 @@ $result = $conn->query($sql);
 
   <script src="script.js"></script>
   <script>
+
+  
     // JavaScript to auto-select the car model based on URL parameter
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -80,6 +84,37 @@ $result = $conn->query($sql);
         document.getElementById('car').value = carModel;
       }
     });
+
+
+    function calculateCost() {
+  const carSelect = document.querySelector("select");
+  const selectedOption = carSelect.options[carSelect.selectedIndex];
+  const price = selectedOption.getAttribute("data-price");
+  const days = document.getElementById("days").value;
+
+  if (price && days) {
+    const totalCost = price * days;
+    document.getElementById("cost").textContent = `Total Cost: ${totalCost}`;
+
+    document.getElementById('confirmBookingButton').setAttribute('data-cost', totalCost);
+
+    document.getElementById('confirmBookingButton').style.display = 'inline-block';
+  } else {
+    document.getElementById("cost").textContent = "Please select a car and enter the number of days.";
+  }
+}
+
+    function confirmBooking() {
+    const car = document.getElementById('car').value;
+    const days = document.getElementById('days').value;
+    const cost = document.getElementById('confirmBookingButton').getAttribute('data-cost');
+
+    alert(`Proceeding to payment gateway for booking: ${car} for ${days} days.`);
+    const redirectURL = `payment.php?car_model=${car}&days=${days}&cost=${cost}`;
+    window.location.href = redirectURL;
+    }
+
+
   </script>
 </body>
 </html>

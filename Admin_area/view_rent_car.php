@@ -133,9 +133,9 @@ $result = $conn->query($sql);
                     <td><img src='". $row['image'] . "' alt='" . $row['car_model'] . "'></td>
 
                     <td>
-                        <a href='' class='action-btn'>Accept</a>
-                        
+                        <a href='action.php?id=" . $row['id'] . "' class='action-btn'>Accept</a>
                     </td>
+
                   </tr>";
 
                   

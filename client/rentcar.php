@@ -4,7 +4,7 @@ $conn = mysqli_connect('localhost', 'root', '', 'wheels4u');
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $owner_username = $_SESSION['user']; // Assuming the user is logged in
+    $owner_username = $_SESSION['user'];
     $car_name = $_POST['car_name'];
     $car_brand = $_POST['car_brand'];
     $car_model = $_POST['car_model'];
