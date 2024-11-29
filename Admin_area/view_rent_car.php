@@ -67,18 +67,37 @@ $result = $conn->query($sql);
             color: white;
         }
         td img {
-            width: 100px;
+            width: 150px;
             height: auto;
         }
-        .action-btn {
+        .action-ac-btn {
             background-color: #007bff;
             color: white;
             padding: 5px 10px;
             border-radius: 5px;
             text-decoration: none;
+            margin-bottom:2px;
         }
-        .action-btn:hover {
-            background-color: #0056b3;
+        .action-ac-btn:hover {
+            background-color: green;
+        }
+        .action-de-btn {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top:2px;
+        }
+        .action-de-btn:hover {
+            background-color: green;
+        }
+        .action{
+            width:120px;
+            height:154px;
+            display:flex;
+            flex-direction:column;
+            gap:40px;
         }
     </style>
 </head>
@@ -131,8 +150,9 @@ $result = $conn->query($sql);
 
                     <td><img src='". $row['image'] . "' alt='" . $row['car_model'] . "'></td>
 
-                    <td>
-                        <a href='action.php?id=" . $row['id'] . "' class='action-btn'>Accept</a>
+                    <td class='action'>
+                        <a href='action.php?id=" . $row['id'] . "' class='action-ac-btn'>Accept</a>
+                        <a href='actiondelete.php?id=" . $row['id'] . "' class='action-de-btn'>Reject</a>
                     </td>
 
                   </tr>";
